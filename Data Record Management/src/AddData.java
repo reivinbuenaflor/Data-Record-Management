@@ -43,6 +43,16 @@ public class AddData {
 					age = Integer.parseInt(ageField.getText());
 					email = emailField.getText();
 					
+					TableRowSorter<TableModel> sorter = new TableRowSorter<>(Main.dataTable.getModel());
+					Main.dataTable.setRowSorter(sorter);
+					
+					ArrayList<RowSorter.SortKey> sortKeys = new ArrayList<>();
+					int columnIndexToSort = 1;
+					
+					sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
+					sorter.setSortKeys(sortKeys);
+					sorter.sort();
+					
 					String row[] = {fname, mname, lname, age+"", email};
 					DefaultTableModel model = (DefaultTableModel) Main.dataTable.getModel();
 					model.addRow(row);
